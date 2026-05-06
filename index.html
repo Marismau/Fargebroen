@@ -1,1 +1,1188 @@
 
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#F4A829">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Fargebroen">
+<meta name="description" content="Profesjonell fargerådgivning og boligplanlegging fra A til Å – Fargebroen">
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icon-192.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+<title>Fargebroen – Broen mellom barnehage og hjem</title>
+<style>
+/* ── ALL FONTS EMBEDDED (ingen internett nødvendig) ── */
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,700;1,500&family=Nunito:wght@400;600;700;800;900&display=swap');
+
+/* ── FARGEVARIABLER ── */
+:root {
+  --sol: #F4A829;
+  --sol-lys: #FEF3DC;
+  --sol-med: #FDDFA0;
+  --himmel: #5BB5D5;
+  --him-lys: #E6F5FB;
+  --gress: #6DBE8C;
+  --gre-lys: #E8F7EE;
+  --lav: #A78BCA;
+  --lav-lys: #F0EAF8;
+  --jord: #E8605A;
+  --jord-lys: #FDECEA;
+  --mork: #2C3E50;
+  --tekst: #3D4F5C;
+  --krem: #FDF6EC;
+  --hvit: #ffffff;
+  --gra: #F5F0EB;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--krem);
+  color: var(--tekst);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+/* ════════════════════════════════
+   TOPBAR
+════════════════════════════════ */
+.topbar {
+  background: var(--mork);
+  color: rgba(255,255,255,0.85);
+  text-align: center;
+  padding: 0.6rem 1rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.topbar span { color: var(--sol); }
+
+/* ════════════════════════════════
+   NAVIGASJON
+════════════════════════════════ */
+nav {
+  background: var(--hvit);
+  border-bottom: 3px solid var(--sol);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+}
+.nav-logo {
+  font-family: 'Lora', serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--mork);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+.nav-logo .regnbue { font-size: 1.5rem; }
+.nav-links { display: flex; gap: 2rem; }
+.nav-links a {
+  color: var(--tekst);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--sol); }
+.nav-cta {
+  background: var(--sol);
+  color: white !important;
+  padding: 0.5rem 1.3rem;
+  border-radius: 50px;
+  box-shadow: 0 3px 12px rgba(244,168,41,0.35);
+  transition: transform 0.2s, box-shadow 0.2s !important;
+}
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 5px 18px rgba(244,168,41,0.45) !important; }
+
+/* ════════════════════════════════
+   HERO
+════════════════════════════════ */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 6rem 2rem 5rem;
+  text-align: center;
+  background: linear-gradient(160deg, #FEF8EE 0%, #FDF6EC 40%, #E8F7EE 100%);
+}
+/* Fargerike blob-bakgrunner */
+.hero::before {
+  content:'';
+  position:absolute; top:-80px; right:-80px;
+  width:420px; height:420px;
+  background: radial-gradient(circle, rgba(244,168,41,0.18) 0%, transparent 65%);
+  border-radius:50%;
+  pointer-events:none;
+}
+.hero::after {
+  content:'';
+  position:absolute; bottom:-60px; left:-60px;
+  width:320px; height:320px;
+  background: radial-gradient(circle, rgba(91,181,213,0.14) 0%, transparent 65%);
+  border-radius:50%;
+  pointer-events:none;
+}
+.hero-blob3 {
+  position:absolute; bottom:20px; right:10%;
+  width:200px; height:200px;
+  background: radial-gradient(circle, rgba(109,190,140,0.13) 0%, transparent 65%);
+  border-radius:50%;
+  pointer-events:none;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--sol-lys);
+  color: var(--sol);
+  border: 2px solid var(--sol-med);
+  border-radius: 50px;
+  padding: 0.35rem 1.2rem;
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 1.8rem;
+  animation: fadeUp 0.6s ease both;
+}
+
+.hero h1 {
+  font-family: 'Lora', serif;
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  font-weight: 700;
+  color: var(--mork);
+  line-height: 1.18;
+  max-width: 720px;
+  margin: 0 auto 1.3rem;
+  animation: fadeUp 0.7s 0.1s ease both;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--himmel);
+}
+
+.hero-sub {
+  font-size: 1.15rem;
+  max-width: 520px;
+  margin: 0 auto 2.5rem;
+  color: var(--tekst);
+  opacity: 0.88;
+  animation: fadeUp 0.7s 0.2s ease both;
+}
+
+.hero-btns {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadeUp 0.7s 0.3s ease both;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 2rem;
+  border-radius: 50px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-sol {
+  background: var(--sol);
+  color: white;
+  box-shadow: 0 4px 18px rgba(244,168,41,0.38);
+}
+.btn-sol:hover { box-shadow: 0 7px 28px rgba(244,168,41,0.48); }
+.btn-outline {
+  background: white;
+  color: var(--mork);
+  border: 2px solid #DDD5CC;
+}
+.btn-outline:hover { border-color: var(--sol); }
+.btn-himmel {
+  background: var(--himmel);
+  color: white;
+  box-shadow: 0 4px 18px rgba(91,181,213,0.38);
+}
+.btn-gress {
+  background: var(--gress);
+  color: white;
+  box-shadow: 0 4px 18px rgba(109,190,140,0.38);
+}
+
+/* Float-pills */
+.hero-pills {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+  animation: fadeUp 0.7s 0.4s ease both;
+}
+.pill {
+  background: white;
+  border-radius: 50px;
+  padding: 0.65rem 1.3rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  box-shadow: 0 3px 14px rgba(0,0,0,0.08);
+  animation: float 3.5s ease-in-out infinite;
+  color: var(--mork);
+}
+.pill:nth-child(2) { animation-delay: 0.6s; }
+.pill:nth-child(3) { animation-delay: 1.2s; }
+
+/* ════════════════════════════════
+   SEKSJONER – felles
+════════════════════════════════ */
+section { padding: 5rem 2rem; }
+.container { max-width: 920px; margin: 0 auto; }
+
+.seksjon-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.3rem 1rem;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+}
+.tag-sol   { background: var(--sol-lys); color: #C8880A; }
+.tag-him   { background: var(--him-lys); color: #2E8FAD; }
+.tag-gre   { background: var(--gre-lys); color: #3A9E63; }
+.tag-lav   { background: var(--lav-lys); color: #7A5BAF; }
+
+h2.seksjon-tittel {
+  font-family: 'Lora', serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 700;
+  color: var(--mork);
+  line-height: 1.22;
+  margin-bottom: 1rem;
+}
+h2.seksjon-tittel em { font-style: italic; color: var(--himmel); }
+
+.seksjon-intro {
+  font-size: 1.05rem;
+  max-width: 580px;
+  margin-bottom: 2.8rem;
+  opacity: 0.88;
+}
+
+/* ════════════════════════════════
+   FOR HVEM
+════════════════════════════════ */
+.for-hvem { background: white; }
+.for-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+.for-kort {
+  border-radius: 24px;
+  padding: 2.2rem 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.for-kort:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
+.for-kort.foreldre {
+  background: linear-gradient(145deg, var(--sol-lys), #FFF8EE);
+  border: 1.5px solid rgba(244,168,41,0.25);
+}
+.for-kort.barnehage {
+  background: linear-gradient(145deg, var(--him-lys), #EDF8FD);
+  border: 1.5px solid rgba(91,181,213,0.25);
+}
+.for-ikon { font-size: 3rem; margin-bottom: 1rem; display: block; }
+.for-kort h3 { font-size: 1.25rem; font-weight: 800; color: var(--mork); margin-bottom: 0.6rem; }
+.for-kort p  { font-size: 0.97rem; line-height: 1.6; }
+
+/* ════════════════════════════════
+   TEMAER
+════════════════════════════════ */
+.temaer { background: linear-gradient(180deg, var(--him-lys) 0%, #F0FAFE 100%); }
+.tema-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.2rem;
+}
+.tema-kort {
+  background: white;
+  border-radius: 20px;
+  padding: 1.8rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 3px 16px rgba(0,0,0,0.06);
+  transition: transform 0.25s, box-shadow 0.25s;
+  cursor: default;
+}
+.tema-kort:hover { transform: translateY(-5px); box-shadow: 0 10px 32px rgba(0,0,0,0.1); }
+.tema-ikon-ring {
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.7rem;
+  margin: 0 auto 1rem;
+}
+.tema-kort h3 { font-size: 1rem; font-weight: 800; color: var(--mork); margin-bottom: 0.4rem; }
+.tema-kort p  { font-size: 0.87rem; line-height: 1.5; }
+
+/* ════════════════════════════════
+   GUIDER
+════════════════════════════════ */
+.guider { background: white; }
+.guider-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.8rem;
+}
+.guide-kort {
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 5px 24px rgba(0,0,0,0.08);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.guide-kort:hover { transform: translateY(-5px); box-shadow: 0 12px 40px rgba(0,0,0,0.13); }
+.guide-topp {
+  padding: 2.5rem 1.5rem 2rem;
+  text-align: center;
+  font-size: 3.5rem;
+  position: relative;
+}
+.guide-topp::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0; right: 0; height: 20px;
+  background: white;
+  border-radius: 20px 20px 0 0;
+}
+.guide-bunn {
+  background: white;
+  padding: 1.2rem 1.6rem 1.8rem;
+}
+.guide-pris {
+  font-size: 0.75rem; font-weight: 900;
+  text-transform: uppercase; letter-spacing: 0.07em;
+  margin-bottom: 0.5rem;
+}
+.pris-gratis { color: var(--gress); }
+.pris-betalt { color: var(--sol); }
+.pris-coming { color: var(--lav); }
+.guide-bunn h3 { font-size: 1.08rem; font-weight: 800; color: var(--mork); margin-bottom: 0.4rem; }
+.guide-bunn p  { font-size: 0.89rem; line-height: 1.55; margin-bottom: 1.2rem; }
+
+/* ════════════════════════════════
+   BARNEHAGESAMARBEID
+════════════════════════════════ */
+.barnehage-sek {
+  background: linear-gradient(135deg, var(--gre-lys) 0%, var(--him-lys) 100%);
+}
+.barnehage-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+.sjekkliste { list-style: none; margin: 1.5rem 0 2.2rem; }
+.sjekkliste li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  font-weight: 600;
+  font-size: 0.97rem;
+}
+.sjekk-hake {
+  width: 22px; height: 22px;
+  background: var(--gress);
+  color: white;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 900;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.barnehage-visuell {
+  background: white;
+  border-radius: 28px;
+  padding: 3rem 2rem;
+  text-align: center;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+}
+.b-stor-ikon { font-size: 5rem; margin-bottom: 1.2rem; display: block; }
+.barnehage-visuell h3 {
+  font-family: 'Lora', serif;
+  font-size: 1.5rem;
+  color: var(--mork);
+  margin-bottom: 0.7rem;
+}
+.barnehage-visuell p { font-size: 0.95rem; margin-bottom: 1.5rem; }
+
+/* ════════════════════════════════
+   OM MEG
+════════════════════════════════ */
+.om-meg { background: white; }
+.om-inner {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+.avatar-ring {
+  width: 130px; height: 130px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--sol), var(--himmel));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 3.5rem;
+  box-shadow: 0 6px 28px rgba(244,168,41,0.32);
+  flex-shrink: 0;
+}
+.om-meg p { font-size: 1rem; line-height: 1.7; margin-bottom: 1rem; }
+.badges { display: flex; gap: 0.7rem; flex-wrap: wrap; margin-top: 1.3rem; }
+.badge {
+  padding: 0.35rem 1rem;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+.badge-sol { background: var(--sol-lys); color: #C8880A; }
+.badge-him { background: var(--him-lys); color: #2E8FAD; }
+.badge-lav { background: var(--lav-lys); color: #7A5BAF; }
+
+/* ════════════════════════════════
+   LEAD MAGNET / E-POST
+════════════════════════════════ */
+.lead-sek {
+  background: linear-gradient(135deg, var(--mork) 0%, #2E4A5F 100%);
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.lead-sek::before {
+  content:'';
+  position:absolute; top:-100px; right:-100px;
+  width:400px; height:400px;
+  background: radial-gradient(circle, rgba(244,168,41,0.12) 0%, transparent 60%);
+  border-radius:50%; pointer-events:none;
+}
+.lead-sek::after {
+  content:'';
+  position:absolute; bottom:-80px; left:-80px;
+  width:300px; height:300px;
+  background: radial-gradient(circle, rgba(91,181,213,0.10) 0%, transparent 60%);
+  border-radius:50%; pointer-events:none;
+}
+.lead-sek .seksjon-tag { background: rgba(244,168,41,0.18); color: var(--sol); }
+.lead-sek h2 { color: white; font-family: 'Lora', serif; font-size: clamp(1.8rem,3.5vw,2.6rem); margin-bottom: 1rem; }
+.lead-sek h2 em { color: var(--sol); font-style: italic; }
+.lead-sek .seksjon-intro { color: rgba(255,255,255,0.82); margin: 0 auto 2.5rem; }
+
+.epost-form {
+  display: flex;
+  gap: 0.8rem;
+  max-width: 500px;
+  margin: 0 auto 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative; z-index:1;
+}
+.epost-input {
+  flex: 1;
+  min-width: 220px;
+  padding: 0.9rem 1.5rem;
+  border-radius: 50px;
+  border: none;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.97rem;
+  outline: none;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+}
+.magnets {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  position: relative; z-index:1;
+}
+.magnet {
+  background: rgba(255,255,255,0.09);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 14px;
+  padding: 1rem 1.5rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.9);
+  text-align: center;
+}
+.magnet-ikon { font-size: 1.4rem; display: block; margin-bottom: 0.3rem; }
+
+/* ════════════════════════════════
+   FOOTER
+════════════════════════════════ */
+footer {
+  background: var(--mork);
+  color: rgba(255,255,255,0.55);
+  text-align: center;
+  padding: 2.5rem 2rem;
+  border-top: 3px solid var(--sol);
+  font-size: 0.9rem;
+}
+footer strong { color: rgba(255,255,255,0.9); }
+footer a { color: rgba(255,255,255,0.45); text-decoration: none; }
+footer a:hover { color: var(--sol); }
+
+/* ════════════════════════════════
+   ANIMASJONER
+════════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(22px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50%     { transform: translateY(-7px); }
+}
+
+/* ════════════════════════════════
+   RESPONSIV
+════════════════════════════════ */
+@media (max-width: 700px) {
+  nav { padding: 0 1rem; }
+  .nav-links { display: none; }
+  .barnehage-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .om-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .avatar-ring { width: 90px; height: 90px; font-size: 2.5rem; }
+  section { padding: 3.5rem 1.2rem; }
+}
+
+/* ════════════════════════════════════════════════════════
+   REDIGERINGSGUIDE (skjult i nettleseren, synlig i koden)
+   Scroll ned til bunnen for instruksjoner!
+════════════════════════════════════════════════════════ */
+
+/* ══ RESPONSIVT SKJEMA ══════════════════════════════════════ */
+form {
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+form input, form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: .9rem 1.4rem;
+  border: none;
+  border-radius: 4px;
+  font-family: 'Jost', sans-serif;
+  font-size: .95rem;
+  outline: none;
+}
+form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+form button {
+  width: 100%;
+  justify-content: center;
+}
+</style>
+</head>
+<body>
+
+<!-- ══ TOPBAR ══════════════════════════════════════════ -->
+<!--
+  📝 ENDRE HER: Meldingen øverst på siden
+  Bytt ut teksten mellom de vanlige tekstnodene
+-->
+<div class="topbar">
+  🌈 <span>Fargebroen</span> – Profesjonell boligplanlegging fra A til Å – last ned nå!
+</div>
+
+<!-- ══ NAVIGASJON ══════════════════════════════════════ -->
+<!--
+  📝 ENDRE HER: Logonavn og menypunkter
+-->
+<nav>
+  <a href="#" class="nav-logo">
+    Farge<strong>broen</strong>
+  </a>
+  <div class="nav-links">
+    <a href="#temaer">Temaer</a>
+    <a href="#guider">Guider</a>
+    <a href="#barnehage">Skoler & barnehager</a>
+    <a href="#om">Om meg</a>
+    <a href="https://formspree.io/f/mjgjzvwj" class="nav-cta">Last ned gratis</a>
+  </div>
+</nav>
+
+<!-- ══ HERO ════════════════════════════════════════════ -->
+<!--
+  📝 ENDRE HER:
+  - hero-badge: den lille teksten i gul pille øverst
+  - h1: hovedoverskriften (tekst i <em>...</em> blir blå/kursiv)
+  - hero-sub: underteksten
+  - Knappene: tekst og href="#seksjonsid"
+  - pills: de tre svevende pillene
+-->
+<section class="hero">
+  <div class="hero-blob3"></div>
+  <div class="container">
+
+    <div class="hero-badge">
+      🌈 Profesjonell boligplanlegging fra A til Å
+    </div>
+
+    <h1>
+      Fargebroen –<br>
+      <em>din fargerådgiver</em>
+    </h1>
+
+    <p class="hero-sub">
+      Sertifisert fargerådgivning og boligplanlegging for deg som vil skape
+      vakre, gjennomtenkte hjem – fra første fargevalg til ferdig resultat.
+    </p>
+
+    <div class="hero-btns">
+      <a href="https://formspree.io/f/mjgjzvwj" class="btn btn-sol">📥 Last ned gratis guide</a>
+      <a href="#temaer" class="btn btn-outline">Se hva vi tilbyr →</a>
+    </div>
+
+    <div class="hero-pills">
+      <div class="pill">🎨 Fargerådgivning</div>
+      <div class="pill">🏠 Boligplanlegging</div>
+      <div class="pill">✨ Sertifisert rådgiver</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ FOR HVEM ═════════════════════════════════════════ -->
+<!--
+  📝 ENDRE HER:
+  - seksjon-tittel: overskriften
+  - seksjon-intro: brødteksten
+  - De to kortene: emoji, h3-tittel og p-tekst
+-->
+<section class="for-hvem" id="forhvem">
+  <div class="container">
+    <span class="seksjon-tag tag-sol">For hvem?</span>
+    <h2 class="seksjon-tittel">Dette er stedet for <em>deg</em></h2>
+    <p class="seksjon-intro">
+      Enten du skal selge bolig, skape et mer harmonisk hjem eller finne
+      farger som gir ro og romfølelse – her finner du skreddersydd veiledning.
+    </p>
+    <div class="for-grid">
+
+      <div class="for-kort foreldre">
+        <span class="for-ikon">🏠</span>
+        <h3>Boligeiere</h3>
+        <p>
+          Sertifisert fargerådgivning som hjelper deg å skape et helhetlig,
+          vakkert hjem – fra første fargevalg til ferdig resultat.
+        </p>
+      </div>
+
+      <div class="for-kort barnehage">
+        <span class="for-ikon">🏡</span>
+        <h3>Boligselgere</h3>
+        <p>
+          Strategiske fargevalg og boligstyling som nøytraliserer rommet,
+          maksimerer lyset og gjør boligen attraktiv for flest mulig kjøpere.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ TEMAER ═══════════════════════════════════════════ -->
+<!--
+  📝 ENDRE HER:
+  - Legg til / fjern tema-kort ved å kopiere et <div class="tema-kort">-blokk
+  - Endre emoji, h3 og p i hvert kort
+  - style="background:#FARGE" setter bakgrunnsfargen på ikonringen
+    Bruk: #FEF3DC (gul), #E6F5FB (blå), #E8F7EE (grønn), #F0EAF8 (lilla)
+-->
+<section class="temaer" id="temaer">
+  <div class="container">
+    <span class="seksjon-tag tag-him">Spesialområder</span>
+    <h2 class="seksjon-tittel">Hva vi hjelper deg med</h2>
+    <p class="seksjon-intro">
+      Fire spesialiserte tjenester – basert på fargepsykologi, boligstyling
+      og sertifisert fargerådgivning.
+    </p>
+    <div class="tema-grid">
+
+      <div class="tema-kort">
+        <div class="tema-ikon-ring" style="background:#FEF3DC;">🧵</div>
+        <h3>Den røde tråden</h3>
+        <p>Helhetlig bolig med flyt mellom stue, kjøkken og gang. Fargeoverganger som binder rommene sammen.</p>
+      </div>
+
+      <div class="tema-kort">
+        <div class="tema-ikon-ring" style="background:#E6F5FB;">🏷️</div>
+        <h3>Boligsalg & Verdiskapning</h3>
+        <p>Strategiske fargevalg som nøytraliserer, maksimerer lyset og gjør boligen attraktiv for flest mulig kjøpere.</p>
+      </div>
+
+      <div class="tema-kort">
+        <div class="tema-ikon-ring" style="background:#E8F7EE;">🛏️</div>
+        <h3>Ro & Restitusjon</h3>
+        <p>Beroligende paletter for soverom og bad – uten at det blir kjedelig eller deprimerende.</p>
+      </div>
+
+      <div class="tema-kort">
+        <div class="tema-ikon-ring" style="background:#F0EAF8;">💡</div>
+        <h3>Lys & Romfølelse</h3>
+        <p>Slik takler du nordvendte rom, lave tak og små vinduer med riktig fargebruk.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ GUIDER ═══════════════════════════════════════════ -->
+<!--
+  📝 ENDRE HER:
+  - Hvert guide-kort har: guide-topp (emoji/farge), guide-bunn (pris, tittel, tekst, knapp)
+  - guide-pris: bruk klassen pris-gratis, pris-betalt eller pris-coming
+  - guide-topp background: endre bakgrunnsfargen der
+  - href på knappen: lenk til MailerLite-skjema, produktside eller #epost
+-->
+<section class="guider" id="guider">
+  <div class="container">
+    <span class="seksjon-tag tag-gre">Guider</span>
+    <h2 class="seksjon-tittel">Last ned og lær</h2>
+    <p class="seksjon-intro">
+      Praktiske PDF-guider du kan bruke med én gang –
+      noen gratis, noen til en liten pris.
+    </p>
+    <div class="guider-grid">
+
+      <!-- GUIDE-KORT 1 -->
+      <div class="guide-kort">
+        <div class="guide-topp" style="background: linear-gradient(145deg, #E8F7EE, #D4F0E0);">
+          📘
+        </div>
+        <div class="guide-bunn">
+          <div class="guide-pris pris-gratis">✦ Helt gratis</div>
+          <h3>Farger for barnerommet</h3>
+          <p>Din guide til å velge farger som støtter barnets ro, lek og utvikling. Med konkrete fargeforslag og tips.</p>
+          <a href="https://formspree.io/f/mjgjzvwj" class="btn btn-gress">Last ned gratis →</a>
+        </div>
+      </div>
+
+      <!-- GUIDE-KORT 2 -->
+      <div class="guide-kort">
+        <div class="guide-topp" style="background: linear-gradient(145deg, #FEF3DC, #FDDFA0);">
+          🌈
+        </div>
+        <div class="guide-bunn">
+          <div class="guide-pris pris-coming">✦ Kommer snart</div>
+          <h3>Sone-guide for barnerommet</h3>
+          <p>Lek, ro og kreativitet – slik deler du opp rommet for å støtte ulike aktiviteter.</p>
+          <a href="https://formspree.io/f/mjgjzvwj" class="btn btn-sol">Få beskjed når den er klar →</a>
+        </div>
+      </div>
+
+      <!-- GUIDE-KORT 3 -->
+      <div class="guide-kort">
+        <div class="guide-topp" style="background: linear-gradient(145deg, #E6F5FB, #CCE9F5);">
+          🏫
+        </div>
+        <div class="guide-bunn">
+          <div class="guide-pris pris-betalt">✦ For barnehager</div>
+          <h3>Fargesetting av barnehagerom</h3>
+          <p>Faglig guide til bevisst bruk av farger i barnehagens inne- og uterom.</p>
+          <a href="#barnehage" class="btn btn-himmel">Les mer →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ BARNEHAGESAMARBEID ══════════════════════════════ -->
+<!--
+  📝 ENDRE HER:
+  - Overskrift, ingress
+  - Listeelementene i <ul class="sjekkliste">
+  - Den hvite boksen til høyre (stor ikon, h3, p, knapp)
+-->
+<section class="barnehage-sek" id="barnehage">
+  <div class="container">
+    <div class="barnehage-inner">
+
+      <div>
+        <span class="seksjon-tag tag-gre">Tjenester</span>
+        <h2 class="seksjon-tittel">Profesjonell fargerådgivning</h2>
+        <p style="margin-bottom:0.5rem; font-size:1rem;">
+          Som sertifisert fargerådgiver og boligstylist tilbyr jeg skreddersydde
+          løsninger – enten du vil skape drømmeboligen eller maksimere salgsprisen.
+        </p>
+        <ul class="sjekkliste">
+          <li><span class="sjekk-hake">✓</span> Helhetlig fargeplan for hele boligen</li>
+          <li><span class="sjekk-hake">✓</span> Fargerådgivning for boligsalg</li>
+          <li><span class="sjekk-hake">✓</span> Sone-inndeling og fargeoverganger</li>
+          <li><span class="sjekk-hake">✓</span> Rådgivning for utfordrende lysforhold</li>
+          <li><span class="sjekk-hake">✓</span> Digital fargeplan og moodboard</li>
+        </ul>
+        <a href="https://formspree.io/f/mjgjzvwj" class="btn btn-gress">Ta kontakt →</a>
+      </div>
+
+      <div class="barnehage-visuell">
+        <span class="b-stor-ikon">🎨</span>
+        <h3>La oss skape noe vakkert</h3>
+        <p>
+          Jeg hjelper deg å finne den røde tråden i hjemmet ditt –
+          fra første fargevalg til ferdig resultat.
+        </p>
+        <a href="https://formspree.io/f/mjgjzvwj" class="btn btn-gress">Book en prat →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ OM MEG ═══════════════════════════════════════════ -->
+<!--
+  📝 ENDRE HER:
+  - avatar-ring: bytt ut emojien 👩 med et bilde hvis du vil:
+    <img src="bilde.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+  - De to <p>-avsnittene: din presentasjonstekst
+  - badges: titler/etiketter under teksten
+-->
+<section class="om-meg" id="om">
+  <div class="container">
+    <div class="om-inner">
+
+      <div class="avatar-ring">👩</div>
+
+      <div>
+        <span class="seksjon-tag tag-lav">Om meg</span>
+        <h2 class="seksjon-tittel">Jeg kjenner <em>begge</em> verdener</h2>
+        <p>
+          Jeg er sertifisert fargerådgiver og boligstylist med lidenskap for
+          å skape helhetlige, vakre hjem. Med et trent øye for farger, lys og
+          romfølelse hjelper jeg deg å finne løsninger som virkelig fungerer.
+        </p>
+        <p>
+          Gjennom <strong>Fargebroen</strong> gjør jeg profesjonell
+          fargerådgivning tilgjengelig for alle – fra A til Å.
+        </p>
+        <div class="badges">
+          <span class="badge badge-sol">🎨 Sertifisert fargerådgiver</span>
+          <span class="badge badge-him">🏠 Boligstylist</span>
+          <span class="badge badge-lav">✨ Boligplanlegging</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ LEAD MAGNET / E-POST ═════════════════════════════ -->
+<!--
+  📝 ENDRE HER:
+  - h2: guidenavnet i <em>-taggen
+  - seksjon-intro: beskrivelsen under tittelen
+  - epost-input placeholder: teksten i e-postfeltet
+  - btn-sol: knappteksten
+  - href på knappen: bytt ut med din MailerLite-skjemalenke!
+    Eksempel: href="https://landing.mailerlite.com/DITT-SKJEMANAVN"
+  - De tre magnet-boksene: ikon og tekst
+-->
+<section class="lead-sek" id="epost">
+  <div class="container">
+    <span class="seksjon-tag">✉️ Gratis guide</span>
+    <h2>Få <em>«Farger for barnerommet»</em><br>– helt gratis</h2>
+    <p class="seksjon-intro">
+      Meld deg på nyhetsbrevet og motta guiden rett i innboksen.
+      Du får også jevnlige tips om farger, barneutvikling og hjemmemiljø.
+    </p>
+
+    <!-- BYTT HREF MED DIN MAILERLITE-LENKE -->
+    <div class="epost-form">
+      <input class="epost-input" type="email" placeholder="Din e-postadresse">
+      <a href="https://drive.google.com/file/d/1Eq-jDh_qGo3UzT9oQ4yVjnIPEIKlHx3X/view?usp=drivesdk"
+         class="btn btn-sol">Send meg guiden 🎨</a>
+    </div>
+
+    <div class="magnets">
+      <div class="magnet"><span class="magnet-ikon">📘</span>Gratis PDF-guide</div>
+      <div class="magnet"><span class="magnet-ikon">💌</span>Ukentlige tips</div>
+      <div class="magnet"><span class="magnet-ikon">🔔</span>Nye guider først</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ FOOTER ══════════════════════════════════════════ -->
+<!--
+  📝 ENDRE HER: kontakt-e-post og eventuelt nettside-URL
+-->
+
+<!-- ══ KONTAKTSKJEMA ═════════════════════════════════════════ -->
+<section style="background:#1C1C1E;padding:6rem 2.5rem;position:relative;overflow:hidden;" id="kontakt">
+<div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(201,169,110,.08) 0%,transparent 60%);pointer-events:none;"></div>
+<div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;position:relative;z-index:1;">
+
+  <!-- Info -->
+  <div>
+    <div style="display:inline-flex;align-items:center;gap:.6rem;font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#C9A96E;margin-bottom:.8rem;">
+      <span style="width:22px;height:1px;background:#C9A96E;display:block;"></span>Kom i gang
+    </div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;color:#FDFAF6;line-height:1.18;margin-bottom:1rem;">
+      La oss snakke om <em style="font-style:italic;color:#C9A96E;">ditt</em> hjem
+    </h2>
+    <p style="font-size:.97rem;color:#D4C4B0;font-weight:300;line-height:1.75;margin-bottom:1rem;">
+      Fyll ut skjemaet så tar vi kontakt innen 24 timer for en uforpliktende prat om hva vi kan skape sammen.
+    </p>
+    <p style="font-size:.97rem;color:#D4C4B0;font-weight:300;line-height:1.75;margin-bottom:2rem;">
+      Vi hjelper deg enten du skal pusse opp, selge bolig eller vil ha mer ro og helhet i hjemmet.
+    </p>
+    <div style="display:flex;flex-direction:column;gap:.8rem;">
+      <div style="display:flex;align-items:center;gap:.8rem;font-size:.88rem;color:#D4C4B0;">
+        <div style="width:36px;height:36px;background:rgba(201,169,110,.15);border:1px solid rgba(201,169,110,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;">📧</div>
+        <a href="https://formspree.io/f/mjgjzvwj" style="color:#C9A96E;text-decoration:none;">mm@mstyleinvestment.no</a>
+      </div>
+      <div style="display:flex;align-items:center;gap:.8rem;font-size:.88rem;color:#D4C4B0;">
+        <div style="width:36px;height:36px;background:rgba(201,169,110,.15);border:1px solid rgba(201,169,110,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;">📍</div>
+        <span>Stavanger, Norge</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:.8rem;font-size:.88rem;color:#D4C4B0;">
+        <div style="width:36px;height:36px;background:rgba(201,169,110,.15);border:1px solid rgba(201,169,110,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;">⏱️</div>
+        <span>Svar innen 24 timer</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Skjema -->
+  <div style="background:rgba(255,255,255,.04);border:1px solid rgba(201,169,110,.2);padding:2.5rem;">
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:#FDFAF6;margin-bottom:.4rem;">Book Grunnmuren</h3>
+    <p style="font-size:.85rem;color:#D4C4B0;font-weight:300;margin-bottom:2rem;">Fortell oss litt om prosjektet ditt – så tar vi kontakt!</p>
+
+    <div id="skjema-suksess" style="display:none;background:rgba(109,190,140,.15);border:1px solid rgba(109,190,140,.4);padding:1.5rem;text-align:center;margin-bottom:1rem;">
+      <p style="color:#6DBE8C;font-weight:500;">✅ Takk! Vi tar kontakt innen 24 timer. 🌈</p>
+    </div>
+
+    <form name="fargebroen-kontakt" method="POST" action="https://formspree.io/f/mjgjzvwj" netlify-honeypot="bot-felt" id="kontaktskjema">
+      <input type="hidden" name="form-name" value="fargebroen-kontakt">
+      <p style="display:none;"><input name="bot-felt"></p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+        <div style="display:flex;flex-direction:column;gap:.4rem;">
+          <label style="font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#C9A96E;">Navn *</label>
+          <input type="text" name="navn" placeholder="Ditt navn" required
+            style="background:rgba(255,255,255,.06);border:1px solid rgba(201,169,110,.25);color:#FDFAF6;padding:.8rem 1rem;font-family:'Jost',sans-serif;font-size:.9rem;font-weight:300;outline:none;width:100%;">
+        </div>
+        <div style="display:flex;flex-direction:column;gap:.4rem;">
+          <label style="font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#C9A96E;">E-post *</label>
+          <input type="email" name="epost" placeholder="din@epost.no" required
+            style="background:rgba(255,255,255,.06);border:1px solid rgba(201,169,110,.25);color:#FDFAF6;padding:.8rem 1rem;font-family:'Jost',sans-serif;font-size:.9rem;font-weight:300;outline:none;width:100%;">
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem;">
+        <label style="font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#C9A96E;">Hva er du interessert i? *</label>
+        <select name="tjeneste" required
+          style="background:#2C2825;border:1px solid rgba(201,169,110,.25);color:#FDFAF6;padding:.8rem 1rem;font-family:'Jost',sans-serif;font-size:.9rem;font-weight:300;outline:none;width:100%;cursor:pointer;">
+          <option value="" disabled selected>Velg tjeneste</option>
+          <option value="grunnmuren">Grunnmuren-pakken (2 rom) – fra kr 1 900</option>
+          <option value="rod-trad">Den røde tråden (hele boligen)</option>
+          <option value="boligsalg">Boligsalg & Verdiskapning</option>
+          <option value="ro-restitusjon">Ro & Restitusjon (soverom/bad)</option>
+          <option value="lys-romfolelse">Lys & Romfølelse</option>
+          <option value="skole-barnehage">Skole / Barnehage</option>
+          <option value="guide">Bestill guide</option>
+          <option value="annet">Annet / Usikker</option>
+        </select>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem;">
+        <label style="font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#C9A96E;">Fortell om prosjektet ditt *</label>
+        <textarea name="melding" rows="5" required
+          placeholder="Hva er utfordringen din? Hva ønsker du å oppnå? Har du farger du liker eller vil unngå?"
+          style="background:rgba(255,255,255,.06);border:1px solid rgba(201,169,110,.25);color:#FDFAF6;padding:.8rem 1rem;font-family:'Jost',sans-serif;font-size:.9rem;font-weight:300;outline:none;width:100%;resize:vertical;"></textarea>
+      </div>
+
+      <button type="submit"
+        style="width:100%;background:#C9A96E;color:#1C1C1E;padding:1rem;font-family:'Jost',sans-serif;font-weight:700;font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;border:none;cursor:pointer;transition:background .2s;">
+        Send henvendelse →
+      </button>
+      <p style="text-align:center;font-size:.75rem;color:#7A6E65;margin-top:.8rem;">🔒 Uforpliktende · Vi selger aldri dine opplysninger</p>
+    </form>
+  </div>
+
+</div>
+</section>
+
+<script>
+const form = document.getElementById('kontaktskjema');
+const suksess = document.getElementById('skjema-suksess');
+if(form) {
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const data = new FormData(form);
+    try {
+      const res = await fetch('/', {
+        method:'POST',
+        headers:{'Content-Type':'application/x-www-form-urlencoded'},
+        body: new URLSearchParams(data).toString()
+      });
+      if(res.ok) {
+        form.style.display='none';
+        suksess.style.display='block';
+        suksess.scrollIntoView({behavior:'smooth',block:'center'});
+      } else {
+        window.location.href='https://formspree.io/f/mjgjzvwj';
+      }
+    } catch(err) {
+      window.location.href='https://formspree.io/f/mjgjzvwj';
+    }
+  });
+}
+</script>
+
+<footer>
+  <p style="margin-bottom:0.5rem;">
+    <strong>🌈 Fargebroen</strong> – Profesjonell boligplanlegging fra A til Å
+  </p>
+  <p style="margin-bottom:0.5rem;">
+    © 2026 Fargebroen ·
+    <a href="https://formspree.io/f/mjgjzvwj">Kontakt</a> ·
+    <a href="#">Personvern</a>
+  </p>
+  <p style="font-size:0.8rem; opacity:0.5;">
+    Et konsept av <a href="https://www.mstyleinvestment.com" target="_blank">M Style Investment AS</a>
+  </p>
+</footer>
+
+<!--
+══════════════════════════════════════════════════════════════
+  📋 REDIGERINGSGUIDE – SLIK LEGGER DU INN INNHOLD I BOKSENE
+══════════════════════════════════════════════════════════════
+
+SLIK ÅPNER DU FILEN FOR REDIGERING:
+  → Høyreklikk på filen → «Åpne med» → Notepad / TextEdit / VS Code
+
+TEKST I EN BOKS – eksempel tema-kort:
+  <div class="tema-kort">
+    <div class="tema-ikon-ring" style="background:#FEF3DC;">🎨</div>   ← bytt emoji
+    <h3>Tittel her</h3>                                                ← bytt tittel
+    <p>Beskrivelse her.</p>                                            ← bytt tekst
+  </div>
+
+LEGGE TIL ET NYTT TEMA-KORT:
+  Kopier hele blokken over og lim inn rett under den siste.
+
+ENDRE FARGE PÅ ET KORT:
+  Bakgrunnsfarger du kan bruke:
+  #FEF3DC  → lys gul (sol)
+  #E6F5FB  → lys blå (himmel)
+  #E8F7EE  → lys grønn (gress)
+  #F0EAF8  → lys lilla (lavendel)
+  #FDECEA  → lys rød/rosa (jordbær)
+
+BYTTE KNAPPETEKST:
+  <a href="https://formspree.io/f/mjgjzvwj" class="btn btn-sol">TEKST HER</a>
+  Knappfarger: btn-sol (gul), btn-himmel (blå), btn-gress (grønn)
+
+LEGGE TIL BILDE I "OM MEG":
+  Bytt ut 👩 med:
+  <img src="ditt-bilde.jpg" style="width:100%;height:100%;
+       object-fit:cover;border-radius:50%;">
+
+PUBLISERE PÅ NETLIFY (gratis, 2 minutter):
+  1. Gå til https://app.netlify.com/drop
+  2. Dra og slipp denne HTML-filen inn i vinduet
+  3. Du får en gratis URL med én gang!
+  4. Kan kobles til eget domene (fargebroen.no) etterpå
+
+══════════════════════════════════════════════════════════════
+-->
+
+
+<!-- PWA Service Worker -->
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => console.log('[Fargebroen] Service Worker registrert:', reg.scope))
+      .catch(err => console.log('[Fargebroen] SW feil:', err));
+  });
+}
+
+// PWA Install prompt
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  
+  // Vis install-banner etter 10 sekunder
+  setTimeout(() => {
+    if (deferredPrompt) {
+      const banner = document.createElement('div');
+      banner.innerHTML = `
+        <div style="position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
+          background:#2C3E50;color:white;padding:1rem 1.5rem;border-radius:12px;
+          display:flex;align-items:center;gap:1rem;z-index:9999;
+          box-shadow:0 8px 32px rgba(0,0,0,.3);max-width:340px;width:90%;">
+          <span style="font-size:1.5rem;">🌈</span>
+          <div style="flex:1;">
+            <div style="font-weight:700;font-size:.9rem;">Installer Fargebroen</div>
+            <div style="font-size:.8rem;opacity:.75;">Legg til på hjemskjermen</div>
+          </div>
+          <button onclick="installApp()" style="background:#F4A829;color:#2C3E50;
+            border:none;padding:.5rem 1rem;font-weight:700;font-size:.82rem;
+            cursor:pointer;border-radius:6px;">Installer</button>
+          <button onclick="this.parentElement.parentElement.remove()" 
+            style="background:transparent;border:none;color:rgba(255,255,255,.5);
+            font-size:1.2rem;cursor:pointer;padding:0 .3rem;">×</button>
+        </div>`;
+      document.body.appendChild(banner);
+    }
+  }, 10000);
+});
+
+function installApp() {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(result => {
+      console.log('[Fargebroen] Install result:', result.outcome);
+      deferredPrompt = null;
+    });
+  }
+}
+</script>
+</body>
+</html>
